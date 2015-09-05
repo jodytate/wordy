@@ -1,0 +1,5 @@
+.wordlist-container {
+  -webkit-columns: 5 200px;
+     -moz-columns: 5 200px;
+          columns: 5 200px;
+}
