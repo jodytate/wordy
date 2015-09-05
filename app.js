@@ -22,6 +22,10 @@
       $scope.words = fn ('', str, []);
     };
 
+    $scope.clearWordList = function () {
+      $scope.words = [];
+    };
+
   });
 
 })();
