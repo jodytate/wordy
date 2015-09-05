@@ -5,21 +5,36 @@
 
   .controller('WordyController', function ($scope) {
 
-    $scope.wordy = function (str) {
-      var fn = function(active, rest, stuff) {
-          if (!active && !rest)
-              return;
-          if (!rest) {
-              if (active.length > 1 && active.match(/[aeiouAEIOU]/)) {
-               stuff.push(active);
-              }
-          } else {
-              fn (active + rest[0], rest.slice(1), stuff);
-              fn (active, rest.slice(1), stuff);
+    $scope.words = [];
+
+    $scope.wordy = function (word) {
+      var rearrangedWord;
+      var head;
+      var tail;
+
+      if (!word) {
+        return $scope.words;
+      }
+
+      function rearrange(str, prefix) {
+        prefix = prefix || '';
+
+        str.split('').map(function(head, idx) {
+          tail = str.slice(0, idx) + str.slice(idx + 1);
+          rearrangedWord = prefix + head + tail;
+
+          if ($scope.words.indexOf(rearrangedWord) < 0) {
+            $scope.words.push(rearrangedWord);
           }
-          return stuff;
-      };
-      $scope.words = fn ('', str, []);
+
+          if (tail.length > 1) {
+            rearrange(tail, prefix + head);
+          }
+        });
+      }
+
+      rearrange(word, '');
+      return $scope.words;
     };
 
     $scope.clearWordList = function () {

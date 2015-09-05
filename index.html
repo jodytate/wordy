@@ -18,9 +18,9 @@
       <div id="wordy-main" ng-controller="WordyController">
         <form class="form-inline" ng-submit="isItAWord(words)">
           <div class="form-group">
-            <input type="text" class="form-control" ng-model="str" ng-change="wordy(str)">
+            <input type="text" class="form-control" ng-model="input" ng-change="wordy(input)">
           </div>
-          <button ng-if="words" ng-click="clearWordList()" id="clear-word-list" class="btn btn-default">Clear Words</button>
+          <button ng-if="words.length" ng-click="clearWordList()" id="clear-word-list" class="btn btn-default">Clear Words</button>
         </form>
 
         <br>
