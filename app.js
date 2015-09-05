@@ -3,7 +3,7 @@
 
   angular.module('wordyApp', [])
 
-  .controller('WordyController', function ($scope, $http) {
+  .controller('WordyController', function ($scope) {
 
     $scope.wordy = function (str) {
       var fn = function(active, rest, stuff) {
